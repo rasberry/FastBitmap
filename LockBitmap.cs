@@ -23,7 +23,7 @@ namespace FastBitmap
 		byte* Iptr = null;
 		BitmapData bitmapData = null;
 		bool isLocked = false;
-		int Length = -1;
+		long Length = -1;
 
 		public LockBitmap(Bitmap source)
 		{
@@ -43,13 +43,13 @@ namespace FastBitmap
 			Height = source.Height;
  
 			// get total locked pixels count
-			int pixelCount = Width * Height;
+			long pixelCount = Width * Height;
  
 			// Create rectangle to lock
 			Rectangle rect = new Rectangle(0, 0, Width, Height);
  
 			// get source bitmap pixel format size
-			Depth = System.Drawing.Bitmap.GetPixelFormatSize(source.PixelFormat);
+			Depth = Image.GetPixelFormatSize(source.PixelFormat);
 
 			//set the length in bytes (total pixels * bytes/pixel)
 			Length = pixelCount * Depth / 8;
